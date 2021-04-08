@@ -3,7 +3,7 @@
 // etape 3 : assertion
 
 
-const multiplication = require ( './multiplication');
+import multiplication from './multiplication'
 
 test('10 multiplié par 9 = 90', () => {
     expect(multiplication(9,10)).toBe(90)
