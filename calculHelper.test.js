@@ -130,28 +130,42 @@ describe('test d\'instance de classe', ()=>{
     })
 })
 
-//arrayContaining
+//arrayContaining 
 
+function getRoleA(){
+    return ["admin", "guest"]
+}
+function getRoleB(){
+    return ["admin", "user"]
+}
 
+// on verifie que les roles match ou ne match pas avec certaine valeurs
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// describe('test de la fonctionnalité isAdmin', ()=>{
-   
-//     test('test de isAdmin avec un user simple', () =>{
-//         expect(callIsAdmin).toThrowError('interdit')
-//     })
+describe('test de array de roles', ()=>{
+    const attendu = ["admin", "guest"];
+    test('test le role A contient les valeurs de attendu', () =>{
+        expect(getRoleA()).toEqual(expect.arrayContaining(attendu))
+    })
+    test('test le role B ne contient pas les valeurs de attendu', () =>{
+        expect(getRoleB()).not.toEqual(expect.arrayContaining(attendu))
+    })
     
-// })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
