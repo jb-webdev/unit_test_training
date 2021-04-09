@@ -17,9 +17,20 @@ function afficherMessageCalculAir(a, b) {
     return libelle
 } 
 
+function isAdmin(user) {
+    if (user.role === "admin") {
+        return true;
+    } else {
+        throw new Error('interdit')
+    }
+}
+
+
+
 export {
     calculAir,
     calculAirCarre,
     multiplication,
-    afficherMessageCalculAir
+    afficherMessageCalculAir,
+    isAdmin
 }
