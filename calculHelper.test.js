@@ -210,14 +210,23 @@ test('test de promise', ()=>{
 })
 
 
+// MOCK
+function forEach(items, callback) {
+    for (let index = 0; index < items.length; index++ ) {
+        callback(items[index]);
+    }
+}
 
+test('test de foreach avec mock', ()=>{
+    const mockCallback = jest.fn(x => "salut "+ x)
+    forEach(["toto", "titi"], mockCallback)
 
-
-
-
-
-
-
+    expect(mockCallback.mock.calls.length).toBe(2)
+    expect(mockCallback.mock.calls[0][0]).toBe("toto") // on test que la première valeur du tableau est bien "toto"
+    expect(mockCallback.mock.calls[1][0]).toBe("titi") // on test que la première valeur du tableau est bien "titi"
+    expect(mockCallback.mock.results[0].value).toBe("salut toto") 
+    expect(mockCallback.mock.results[1].value).toBe("salut titi") 
+})
 
 
 
