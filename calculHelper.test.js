@@ -152,6 +152,63 @@ describe('test de array de roles', ()=>{
     
 })
 
+// Async
+
+// simulation appel API
+function fetchAPi(callback){
+    setTimeout(function(){
+        callback("{api:ok")
+    }, 3000)
+}
+//=========== NE PAS FAIRE CELA CE N'EST PAS LA BONNE MANIERE !!!
+
+// describe('test de fetch api async', ()=>{
+//     test('test de fetcAPi', () =>{
+//         function callback(data){
+//             expect(data).toBe("{api:ok")
+//         }
+//         fetchAPi(callback);
+//     })
+
+// })
+
+//=========== A FAIRE utilisé / done() dans un try catch
+
+describe('test de fetch api async', ()=>{
+    test('test de fetcAPi', (done) =>{
+        function callback(data){
+            try {
+                expect(data).toBe("{api:ok")
+                done();
+                 
+            } catch (error) {
+                   done(error)  
+            }
+        }
+        fetchAPi(callback);
+    })
+
+})
+
+
+// Avec Promise
+
+function fetchApiPromise(callback){
+    return new Promise((resolve, reject)=>{
+        setTimeout(function(){
+            resolve("{api:ok")
+        }, 3000)
+    })
+}
+
+
+// test promise
+test('test de promise', ()=>{
+    return fetchApiPromise().then(data =>{
+        expect(data).toBe("{api:ok")
+    })
+})
+
 
 
 
